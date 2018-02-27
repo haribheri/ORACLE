@@ -1,5 +1,7 @@
 <?php
 //sudo chown -R www-data:www-data /home/bheri/Desktop/img/
+
+//PATIENT DETAILS
 	$name=$_POST["p_name"];
 	$gender=$_POST["gender"];
 	$mobile=$_POST["p_mobile"];
@@ -7,16 +9,20 @@
 	$mr_num=$_post["mr_num"];
 	$op_ip=$_post["op_ip"];
 
+
+//DESEASE DETAILS
+
 	$disease_code=$_POST["disease_code"];
 	$disease_name=$_POST["disease_name"];
-
 	$complaints=$_POST["complaints"];
-
 	$present_medicine=$_POST["present_medicine"];
 	$ge=$_POST["ge"];
 	$pa=$_POST["pa"];
 	$eg=$_POST["eg"];
 	$dre=$_POST["dre"];
+
+
+//Medicl history
 
 	$medical_history=$_POST["medical_history"];
 	$surgical_history=$_POST["surgical_history"];

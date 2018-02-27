@@ -256,6 +256,7 @@ return false;
 
 $(document).ready(function (e){
 $("#uploadForm").on('submit',(function(e){
+alert("hello");
 e.preventDefault();
 $.ajax({
 url: "insert.php",
