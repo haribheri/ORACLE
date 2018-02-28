@@ -9,6 +9,10 @@
 	$mr_num=$_post["mr_num"];
 	$op_ip=$_post["op_ip"];
 
+print_r($_POST);
+
+
+print "name is ".$_POST["p_name"]."\n";
 
 //DESEASE DETAILS
 
@@ -113,9 +117,9 @@ tbl_med_history(f_uniq_id numeric,fk_disease_code numeric,medical_history text, 
 
 
 
-	if (isset(=$_POST['complaints']) && =$_POST['complaints'] !='')
+	if (isset($_POST['complaints']) && $_POST['complaints'] !='')
 	{
-		$complaints="'".=$_POST['complaints']."'";
+		$complaints="'".$_POST['complaints']."'";
 	}
 	else
 	{
