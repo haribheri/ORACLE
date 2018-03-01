@@ -21,9 +21,9 @@
                 <a>Patient details</a> 
                 <a>Disease Details</a> 
                 <a>Medical History</a> 
-                <a>Other Details_1</a>
-                <a>Other Details_2</a>
-                <a>Other Details_3</a>
+                <a>Medical Codes</a>
+                <a>Optional codes</a>
+                <a>Other Details</a>
             </nav>
 
             <div class="content visible">
@@ -111,16 +111,41 @@
 			<tr><td style="text-align:left;padding:15px">Code-5 Pics/video</td></tr>
 			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
 
-
-
 		<!-- video 
 			<tr><td style="text-align:left;padding:0 5px">Upload videos</td></tr>
 			<tr><td style="padding:0 5px"><input type="file" name="videoToUpload" id="videoToUpload"></td></tr>
 		video -->
 
 		</table>
+            </div>      
 
-            </div>        
+            <div class="content">
+                <table cellpadding="5" class="ad_cont_tbl">
+			<tr><td style="text-align:left;padding:5px">OPT Code-1 Pics/video</td></tr>
+			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
+
+			<tr><td style="text-align:left;padding:15px">OPT Code-2 Pics/video</td></tr>
+			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
+
+			<tr><td style="text-align:left;padding:15px">OPT Code-3 Pics/video</td></tr>
+			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
+
+
+		</table>
+            </div>      
+
+            <div class="content">
+                 <table cellpadding="5" class="ad_cont_tbl">
+                
+			    <tr><td style="text-align:left;padding:0 5px">Optional data</td></tr>
+			<tr><td><textarea name="medical_history" placeholder="enterData here..." id="medical_history" rows="5" cols="30" "></textarea></td></tr>
+
+                </table>
+
+            </div>      
+
+
+  
         </div>
 
         <center>
