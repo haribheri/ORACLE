@@ -9,14 +9,6 @@
 	$mr_num=$_post["mr_num"];
 	$op_ip=$_post["op_ip"];
 
-<<<<<<< HEAD
-=======
-print_r($_POST);
-
-
-print "name is ".$_POST["p_name"]."\n";
-
->>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
 //DESEASE DETAILS
 
 	$disease_code=$_POST["disease_code"];
@@ -35,7 +27,6 @@ print "name is ".$_POST["p_name"]."\n";
 	$surgical_history=$_POST["surgical_history"];
 	$rt_chemo_history=$_POST["rt_chemo_history"];
 
-<<<<<<< HEAD
 print "name is ".$name."\n";
 print "gender is ".$gender."\n";
 print "disease code is". $disease_code."\n";
@@ -43,9 +34,6 @@ print "med history is ".$medical_history."\n";
 
 
 exit;
-=======
-
->>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
 //	$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
 	$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
 

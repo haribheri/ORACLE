@@ -1,22 +1,11 @@
-<<<<<<< HEAD
 function addPatient()  //show pop-up
 {
     document.getElementById("contactPopUp").style.display="block";
 }
-=======
-  function addPatient()  //show pop-up
-        {
-            document.getElementById("contactPopUp").style.display="block";
-        }
->>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
 
 
 $(document).ready(function (e){
 $("#uploadForm").on('submit',(function(e){
-<<<<<<< HEAD
-=======
-alert("hello bheri");
->>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
 e.preventDefault();
 
 $.ajax({

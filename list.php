@@ -1,14 +1,8 @@
 <?php
 
-<<<<<<< HEAD
 	//$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=postgres password=1234") or die("pg_not connect");//home
 
 	$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
-=======
-	$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=postgres password=1234") or die("pg_not connect");//home
-
-	//$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
->>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
 
 	$sql1= "select * from patient_details";
 
