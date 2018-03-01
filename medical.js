@@ -2,7 +2,11 @@
 $(document).ready(function(){
         
         $.ajax({
+<<<<<<< HEAD
             url:'http://localhost/murali/list.php',//listing php url
+=======
+            url:'http://localhost/list.php',
+>>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
             method: 'post',
             dataType: 'json',
             success: function (data) 
@@ -60,7 +64,11 @@ $(document).ready(function(){
         //alert("value is "+obj.pid);
         $.ajax({
             type: "POST",
+<<<<<<< HEAD
             url:'http://localhost/murali/detail.php',  //detail pge url
+=======
+            url:'http://localhost/final/detail.php',
+>>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
             data: JSON.stringify(obj),
             dataType: 'json',
             success: function (data) 
@@ -256,6 +264,10 @@ return false;
 
 $(document).ready(function (e){
 $("#uploadForm").on('submit',(function(e){
+<<<<<<< HEAD
+=======
+alert("hello");
+>>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
 e.preventDefault();
 $.ajax({
 url: "insert.php",
@@ -280,7 +292,11 @@ $(document).ready(function (e){
 $("#search_dt_Form").on('submit',(function(e){
 e.preventDefault();
 $.ajax({
+<<<<<<< HEAD
 url: "search_by_date.php",
+=======
+url: "searchdt.php",
+>>>>>>> 1d2cc8fe129dc487633a6813ecb12fc85af1f700
 type: "POST",
 data:  new FormData(this),
 contentType: false,
