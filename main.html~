@@ -57,10 +57,15 @@
                     <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" name="disease_code" id="disease_code"></td></tr>
                     <tr><td style="text-align:left;padding:0 5px">Disease name</td></tr>
                     <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" name="disease_name" id="disease_name"></td></tr>
+
                     <tr><td style="text-align:left;padding:0 5px">Compalints</td></tr>
-                    <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" name="complaints" id="complaints"></td></tr>
+
+			<tr><td style="padding:0 5px"><textarea name="complaints" placeholder="enter complaints here..." id="complaints" rows="4" cols="30" "></textarea></td></tr>
+
                     <tr><td style="text-align:left;padding:0 5px">Present medicine</td></tr>
-                    <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" id="present_medicine"></td></tr>
+
+			<tr><td style="padding:0 5px"><textarea name="present_medicine" placeholder="enter Present Medicine here..." id="present_medicine" rows="4" cols="30" "></textarea></td></tr>
+
                     <tr><td style="text-align:left;padding:0 5px">GE</td></tr>
                     <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" name="ge" id="ge"></td></tr>
                     <tr><td style="text-align:left;padding:0 5px">PA</td></tr>
@@ -74,28 +79,49 @@
             </div>
             <div class="content">
                 <table cellpadding="5" class="ad_cont_tbl">
-                    <tr><td style="text-align:left;padding:0 5px">Medical history</td></tr>
-                    <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" name="medical_history" id="medical_history"></td></tr>
+                
+			    <tr><td style="text-align:left;padding:0 5px">Medical history</td></tr>
+			<tr><td><textarea name="medical_history" placeholder="enter medical history here..." id="medical_history" rows="5" cols="30" "></textarea></td></tr>
+
                     <tr><td style="text-align:left;padding:0 5px">Surgical history</td></tr>
-                    <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" name="surgical_history" id="surgical_history"></td></tr>
+			<tr><td><textarea name="surgical_history" placeholder="enter surgical history here..." id="surgical_history" rows="5" cols="30" "></textarea></td></tr>
+
+
                     <tr><td style="text-align:left;padding:0 5px">RT_Chemo history</td></tr>
-                    <tr><td style="padding:0 5px"><input type="text" class="ad_cont_inp" name="rt_chemo_history" id="rt_chemo_history"></td></tr>
+
+			<tr><td><textarea name="rt_chemo_history" placeholder="enter RT/CHEMO history here..." id="rt_chemo_history" rows="5" cols="30" "></textarea></td></tr>
+
 
                 </table>
             </div>
             <div class="content">
                 <table cellpadding="5" class="ad_cont_tbl">
-			<tr><td style="text-align:left;padding:0 5px">Upload Pics</td></tr>
+			<tr><td style="text-align:left;padding:5px">Code-1 Pics/video</td></tr>
 			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
-		
+
+			<tr><td style="text-align:left;padding:15px">Code-2 Pics/video</td></tr>
+			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
+
+			<tr><td style="text-align:left;padding:15px">Code-3 Pics/video</td></tr>
+			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
+
+			<tr><td style="text-align:left;padding: 15px">Code-4 Pics/video</td></tr>
+			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
+
+			<tr><td style="text-align:left;padding:15px">Code-5 Pics/video</td></tr>
+			<tr><td style="padding:0 5px"><input type="file" name="fileToUpload" id="fileToUpload" multiple></td></tr>
+
+
+
+		<!-- video 
 			<tr><td style="text-align:left;padding:0 5px">Upload videos</td></tr>
 			<tr><td style="padding:0 5px"><input type="file" name="videoToUpload" id="videoToUpload"></td></tr>
+		video -->
+
 		</table>
 
             </div>        
         </div>
-
-
 
         <center>
             <div style="align: center;margin-top: 203px;padding-bottom: 5px;"><input type="submit" name="submit" value="submit" class="ad_cont_btn">
