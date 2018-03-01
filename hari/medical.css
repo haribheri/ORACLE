@@ -1,0 +1,157 @@
+    <style>
+            .overlay_s {background:#fff;position: fixed;opacity:.75;filter:alpha(opacity=50);-ms-filter: alpha(Opacity=50);top:0;bottom:0;left:0;right:0}
+            #filter_div{box-sizing:border-box;position:relative;position:fixed;background:#fff;z-index:10;left:50%;margin-left:-10%;top:10%;
+            border-top-left-radius:7px;border-top-right-radius:7px;box-shadow: 0         4px 16px rgba(0,0,0,0.2);}    
+                    
+            .chat_bxx{min-width:30%;max-width:50%;margin:5px 10px 0 10px}.cb{clear:both}.chatbox-ot{margin:10px 0;display:block;float:left;width:100%;}
+            .contact-sent,.chat_adbook{min-width:100%;max-width:100%;box-sizing:border-box}
+            .chattbl tr{border:1px solid #efefef;background:#eff6fc;margin-top:10px;}.chattbl tr:hover{background:#efefef;}.chattbl{margin-top:10px;}.chatMain
+            {margin-top:10px;}
+            .chat_adbook{background:#caedeb!important;color:#000!important;box-shadow:inherit!important}
+            #calender_div ul li{background-color:#f5f5f5;padding:5px;margin-bottom: 5px;}#calender_div ul li:hover,#calender_div ul li.active
+            {background-color:#00a699;color:#fff}
+            .customfrom,.customto{background:#fff;padding:2px 10px;float:left;border:1px solid #ededed;}.cst_date{width:100%;float:left;margin-bottom:10px}
+            #custom_div{float:left;padding:10px;background:#eff6fc;position:absolute;bottom:15px;right:247px;width:179px;}
+    #search_dt_Form{float:center;padding:10px;background:#eff6fc;position:absolute;}
+
+
+.drive_bx{width:200px;height:220px;margin:10px 14px 10px 10px;text-align:center;    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);-moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);position:relative;display: inline-block;}
+.drive_bx:hover{-webkit-box-shadow:  0 2px 11px 6px rgba(66, 133, 244,0.5), 0 3px 1px -2px rgba(66, 133, 244,0.5), 0 1px 5px 0 rgba(66, 133, 244,0.5);box-shadow: 0 2px 11px 6px rgba(66, 133, 244,0.5), 0 3px 1px -2px rgba(66, 133, 244,0.5), 0 1px 5px 0 rgba(66, 133, 244,0.5);-moz-box-shadow: 0 2px 11px 6px rgba(66, 133, 244,0.5), 0 3px 1px -2px rgba(66, 133, 244,0.5), 0 1px 5px 0 rgba(66, 133, 244,0.5);}
+.drive_bx .fa{font-size:60px;padding:55px;} .drive_bx .pdf_d{color:#da2931}  .drive_bx .img{color:#00c0ef} .drive_bx .filet{color:#00a65a}
+
+.txtbx {
+    width: 348px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+
+div.scroll {
+    width: 1000px;
+    height: 1000px;
+    overflow: scroll;
+}
+    
+.txtbx {
+    width: 348px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+    
+.tabLeft {
+    float: left;
+    position: fixed;
+    width: 400px;
+    background: #fff;
+    border: 1px solid #efefef;
+    padding: 5px;
+}
+.textarea {
+    min-height: 100px;
+    height: 100px;
+    padding: 5px;
+    resize: none;
+    width: 348px;
+    margin-bottom: 12px;
+}
+
+
+#address_book_enq_detail {
+    width: calc(100% - 420px);
+}
+
+    </style>

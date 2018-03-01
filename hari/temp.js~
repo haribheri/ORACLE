@@ -4,10 +4,11 @@ function addPatient()  //show pop-up
 }
 
 
+
 $(document).ready(function (e){
 $("#uploadForm").on('submit',(function(e){
+alert("hello bheri");
 e.preventDefault();
-
 $.ajax({
 url: "insert.php",
 type: "POST",
@@ -25,6 +26,9 @@ alert('going to exception block');
 $('#contactPopUp').hide();
 }));
 });
+
+
+
 
 
 $(function() {
