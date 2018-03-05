@@ -43,116 +43,6 @@ print "med history is ".$medical_history."\n";
 
 
 
-//medical codes
-
-
-$code_1=$_POST["code_1"];
-
-$fileName = $_FILES["c_url_1"]["name"]; // The file name
-$fileTmpLoc = $_FILES["c_url_1"]["tmp_name"]; // File in the PHP tmp folder
-$fileType = $_FILES["c_url_1"]["type"]; // The type of file it is
-$fileSize = $_FILES["c_url_1"]["size"]; // File size in bytes
-
-/*
-
-print "code 1 is ".$code_1."\n";
-
-print "name is ".$fileName."\n";
-
-print "location is ".$fileTmpLoc."\n";
-
-print "file type is ".$fileType."\n";
-
-print "file size is ".$fileSize."\n";
-
-
-*/
-
-print "count is ".count($fileName)."\n";
-
-print "\n file fileName is \n";
-print_r($fileName);
-print "\n file fileName is \n";
-
-print "\n file fileTmpLoc is \n";
-print_r($fileTmpLoc);
-print "\n file fileTmpLoc is \n";
-
-print "\n file type is \n";
-print_r($fileType);
-print "\n file type is \n";
-
-exit;
-		for($i=0;$i<count($fileName);$i++)
-		{
-			for($j=0;$j<strlen($fileType[$i]);$j++)
-			{
-	
-				if($fileType[$i][$j]=='/')
-					break;
-			}
-			print "\n=========\n";
-			$var=getimagesize($fileTmpLoc[$i]);
-			print_r($var);
-			print "\n=========\n";
-
-			/*print substr($fileName[$i],-4);
-			print "\n=========\n";
-			print substr($fileName[$i], -1, strpos($fileName[$i], "."));
-			print "\n=========\n";
-			*/
-
-			$url=$pid.".".$i.".".substr($fileType[$i],$j+1);
-			$new_url;
-			$sql_1="insert into patient_url(pid,url) values ($pid,'$url') returning url";
-			$res_1 = pg_query($dbh, $sql_1);
-			if(!$res_1)
-        		{
-				echo pg_last_error($dbh);
-        		}
-			
-			$new_url=pg_fetch_all($res_1);
-			$new_url=$new_url[0]['url'];
-			$fileName[$i]=$new_url;
-			//move_uploaded_file($fileTmpLoc[$i],'/home/bheri/Desktop/img/'.$fileName[$i]);  //home
-			move_uploaded_file($fileTmpLoc[$i],'/var/www/html/uploads/'.$fileName[$i]);	//office
-		}
-//	}
-//	else
-	{	
-		print "something should be present";
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -387,6 +277,100 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 	{
 		echo "Records created successfully for tbl_med_history\n";
 	}
+
+
+
+
+
+
+//medical codes
+
+
+$code_1=$_POST["code_1"];
+
+$fileName = $_FILES["c_url_1"]["name"]; // The file name
+$fileTmpLoc = $_FILES["c_url_1"]["tmp_name"]; // File in the PHP tmp folder
+$fileType = $_FILES["c_url_1"]["type"]; // The type of file it is
+$fileSize = $_FILES["c_url_1"]["size"]; // File size in bytes
+
+/*
+
+print "code 1 is ".$code_1."\n";
+
+print "name is ".$fileName."\n";
+
+print "location is ".$fileTmpLoc."\n";
+
+print "file type is ".$fileType."\n";
+
+print "file size is ".$fileSize."\n";
+
+
+*/
+
+print "count is ".count($fileName)."\n";
+
+/*
+print "\n file fileName is \n";
+print_r($fileName);
+print "\n file fileName is \n";
+
+print "\n file fileTmpLoc is \n";
+print_r($fileTmpLoc);
+print "\n file fileTmpLoc is \n";
+
+print "\n file type is \n";
+print_r($fileType);
+print "\n file type is \n";
+*/
+
+$pid=5005;
+
+		for($i=0;$i<count($fileName);$i++)
+		{
+			for($j=0;$j<strlen($fileType[$i]);$j++)
+			{
+	
+				if($fileType[$i][$j]=='/')
+					break;
+			}
+			print "\n=========\n";
+			$var=getimagesize($fileTmpLoc[$i]);
+			print_r($var);
+			print "\n=========\n";
+
+			/*print substr($fileName[$i],-4);
+			print "\n=========\n";
+			print substr($fileName[$i], -1, strpos($fileName[$i], "."));
+			print "\n=========\n";
+			*/
+
+			$url=$pid.".".$i.".".substr($fileType[$i],$j+1);
+			print "value at ".$i." is ".$url."\n";
+			//$new_url;
+			//$sql_1="insert into patient_url(pid,url) values ($pid,'$url') returning url";
+		//	$res_1 = pg_query($dbh, $sql_1);
+		//	if(!$res_1)
+        	//	{
+		//		echo pg_last_error($dbh);
+        	//	}
+			
+		//	$new_url=pg_fetch_all($res_1);
+		//	$new_url=$new_url[0]['url'];
+		//	$fileName[$i]=$new_url;
+			//move_uploaded_file($fileTmpLoc[$i],'/home/bheri/Desktop/img/'.$fileName[$i]);  //home
+		//	move_uploaded_file($fileTmpLoc[$i],'/var/www/html/uploads/'.$fileName[$i]);	//office
+		}
+
+
+
+
+
+
+
+
+
+
 
 	$sql_4="insert into tbl_med_codes_1(fk_uniq_id,code_1,code1_url) values ($uniqid,$code_1,$code1_url)" ;
 	

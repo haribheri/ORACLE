@@ -23,6 +23,14 @@
 
 //Medicl history
 
+
+$total = count($_FILES['c_url_1']['name']);
+
+
+
+print "count is ".$total."\n";
+
+
 	$medical_history=$_POST["medical_history"];
 	$surgical_history=$_POST["surgical_history"];
 	$rt_chemo_history=$_POST["rt_chemo_history"];
@@ -31,6 +39,11 @@ print "name is ".$name."\n";
 print "gender is ".$gender."\n";
 print "disease code is". $disease_code."\n";
 print "med history is ".$medical_history."\n";
+
+
+
+
+
 
 
 exit;
@@ -199,6 +212,7 @@ tbl_med_history(f_uniq_id numeric,fk_disease_code numeric,medical_history text, 
 		$rt_chemo_history='null';
 	}
 
+
 /*
 
 tbl_patient (uniq_id numeric,p_name text, gender text,mobile text,dob  timestamp without time zone, mr_number numeric,op_ip text,disease_code numeric, insert_date  timestamp without time zone, recent_date  timestamp without time zone );
@@ -206,6 +220,17 @@ tbl_patient (uniq_id numeric,p_name text, gender text,mobile text,dob  timestamp
 tbl_disease(fk_uniq_id numeric,disease_code numeric,disease_name text,complaints text, present_medicine text,ge text,pa text,eg text,dre text);
 
 tbl_med_history(fk_uniq_id numeric,fk_disease_code numeric,medical_history text, surgical_history text, rt_chemo_history text);
+
+tbl_med_codes_1(fk_uniq_id numeric,code_1 numeric,code1_url text);
+
+tbl_med_codes_2(fk_uniq_id numeric,code_2 numeric,code2_url text);
+
+tbl_med_codes_3(fk_uniq_id numeric,code_3 numeric,code3_url text);
+
+tbl_med_codes_4(fk_uniq_id numeric,code_4 numeric,code4_url text);
+
+tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
+
 */
 
 	$sql_1="insert into tbl_patient(p_name,gender,mobile,dob,mr_number,op_ip) values ($name,$gender,$mobile,$birth_date,$mr_num,$op_ip) returning uniq_id";
@@ -253,7 +278,170 @@ tbl_med_history(fk_uniq_id numeric,fk_disease_code numeric,medical_history text,
 		echo "Records created successfully for tbl_med_history\n";
 	}
 
-                                                                                                                                                                                                                                               
 
 
-?>a
+
+
+
+//medical codes
+
+
+$code_1=$_POST["code_1"];
+
+$fileName = $_FILES["c_url_1"]["name"]; // The file name
+$fileTmpLoc = $_FILES["c_url_1"]["tmp_name"]; // File in the PHP tmp folder
+$fileType = $_FILES["c_url_1"]["type"]; // The type of file it is
+$fileSize = $_FILES["c_url_1"]["size"]; // File size in bytes
+
+/*
+
+print "code 1 is ".$code_1."\n";
+
+print "name is ".$fileName."\n";
+
+print "location is ".$fileTmpLoc."\n";
+
+print "file type is ".$fileType."\n";
+
+print "file size is ".$fileSize."\n";
+
+
+*/
+
+print "count is ".count($fileName)."\n";
+
+/*
+print "\n file fileName is \n";
+print_r($fileName);
+print "\n file fileName is \n";
+
+print "\n file fileTmpLoc is \n";
+print_r($fileTmpLoc);
+print "\n file fileTmpLoc is \n";
+
+print "\n file type is \n";
+print_r($fileType);
+print "\n file type is \n";
+*/
+
+$pid=5005;
+
+		for($i=0;$i<count($fileName);$i++)
+		{
+			for($j=0;$j<strlen($fileType[$i]);$j++)
+			{
+	
+				if($fileType[$i][$j]=='/')
+					break;
+			}
+			print "\n=========\n";
+			$var=getimagesize($fileTmpLoc[$i]);
+			print_r($var);
+			print "\n=========\n";
+
+			/*print substr($fileName[$i],-4);
+			print "\n=========\n";
+			print substr($fileName[$i], -1, strpos($fileName[$i], "."));
+			print "\n=========\n";
+			*/
+
+			$url=$pid.".".$i.".".substr($fileType[$i],$j+1);
+			print "value at ".$i." is ".$url."\n";
+			//$new_url;
+			//$sql_1="insert into patient_url(pid,url) values ($pid,'$url') returning url";
+		//	$res_1 = pg_query($dbh, $sql_1);
+		//	if(!$res_1)
+        	//	{
+		//		echo pg_last_error($dbh);
+        	//	}
+			
+		//	$new_url=pg_fetch_all($res_1);
+		//	$new_url=$new_url[0]['url'];
+		//	$fileName[$i]=$new_url;
+			//move_uploaded_file($fileTmpLoc[$i],'/home/bheri/Desktop/img/'.$fileName[$i]);  //home
+		//	move_uploaded_file($fileTmpLoc[$i],'/var/www/html/uploads/'.$fileName[$i]);	//office
+		}
+
+
+
+
+
+
+
+
+
+
+
+	$sql_4="insert into tbl_med_codes_1(fk_uniq_id,code_1,code1_url) values ($uniqid,$code_1,$code1_url)" ;
+	
+	$res_4=pg_query($dbh,$sql_4);
+
+	if(!$res_4)
+	{		
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully for tbl_med_history\n";
+	}
+
+
+	$sql_5="insert into tbl_med_codes_2(fk_uniq_id,code_2,code2_url) values ($uniqid,$code_2,$code2_url)" ;
+	
+	$res_5=pg_query($dbh,$sql_5);
+
+	if(!$res_5)
+	{		
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully for tbl_med_history\n";
+	}
+
+
+
+	$sql_6="insert into tbl_med_codes_3(fk_uniq_id,code_3,code3_url) values ($uniqid,$code_3,$code3_url)" ;
+	
+	$res_6=pg_query($dbh,$sql_6);
+
+	if(!$res_6)
+	{		
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully for tbl_med_history\n";
+	}
+
+	$sql_7="insert into tbl_med_codes_4(fk_uniq_id,code_4,code1_url) values ($uniqid,$code_4,$code4_url)" ;
+	
+	$res_7=pg_query($dbh,$sql_7);
+
+	if(!$res_7)
+	{		
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully for tbl_med_history\n";
+	}
+
+	$sql_8="insert into tbl_med_codes_5(fk_uniq_id,code_5,code5_url) values ($uniqid,$code_5,$code5_url)" ;
+	
+	$res_8=pg_query($dbh,$sql_8);
+
+	if(!$res_8)
+	{		
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully for tbl_med_history\n";
+	}
+
+
+                                                                                                                                                                                                                       
+
+
+?>
