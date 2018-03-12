@@ -42,13 +42,8 @@ print "med history is ".$medical_history."\n";
 
 
 
-
-
-
-
-exit;
-//	$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
-	$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
+	$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
+	//$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
 
 /*
 tbl_patient (uniq_id numeric,p_name text, gender text,mobile text,dob  timestamp without time zone, mr_number numeric,op_ip text,disease_code numeric, insert_date  timestamp without time zone, recent_date  timestamp without time zone );
@@ -110,6 +105,32 @@ tbl_med_history(f_uniq_id numeric,fk_disease_code numeric,medical_history text, 
 	{
 		$op_ip='null';
 	}
+
+
+
+$sql_1="insert into tbl_patient(p_name,gender,mobile,dob,mr_number,op_ip) values ($name,$gender,$mobile,$birth_date,$mr_num,$op_ip) returning uniq_id";
+
+	$res_1=pg_query($dbh,$sql_1);
+	
+	if(!$res_1)
+	{
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully fro tbl_patient\n";
+	}
+
+	$res_data_1=pg_fetch_all($res_1);
+//print_r($res_data_1);
+		$uniqid=$res_data_1[0]['uniq_id'];
+
+//print "o/p is ".$uniqid.'\n';
+
+
+
+
+
 
 	if (isset($_POST['disease_code']) && $_POST['disease_code'] !='')
 	{
@@ -185,6 +206,24 @@ tbl_med_history(f_uniq_id numeric,fk_disease_code numeric,medical_history text, 
 		$dre='null';
 	}
 
+
+
+	$sql_2="insert into tbl_disease(fk_uniq_id,disease_code,disease_name,complaints,present_medicine,ge,pa,eg,dre) 
+				values ($uniqid,$disease_code,$disease_name,$complaints,$present_medicine,$ge,$pa,$eg,$dre)";
+
+	$res_2=pg_query($dbh,$sql_2);
+	
+	if(!$res_2)
+	{
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully for tbl_disease\n";
+	}
+
+
+
 	if (isset($_POST['medical_history']) && $_POST['medical_history'] !='')
 	{
 		$medical_history="'".$_POST['medical_history']."'";
@@ -213,6 +252,23 @@ tbl_med_history(f_uniq_id numeric,fk_disease_code numeric,medical_history text, 
 	}
 
 
+
+	$sql_3="insert into tbl_med_history(fk_uniq_id,fk_disease_code,medical_history,surgical_history,rt_chemo_history) values ($uniqid,$disease_code,$medical_history,$surgical_history,$rt_chemo_history)";
+
+	$res_3=pg_query($dbh,$sql_3);
+	
+	if(!$res_3)
+	{
+		echo pg_last_error($dbh);
+	}
+	else
+	{
+		echo "Records created successfully for tbl_med_history\n";
+	}
+
+//medical-codes
+
+
 /*
 
 tbl_patient (uniq_id numeric,p_name text, gender text,mobile text,dob  timestamp without time zone, mr_number numeric,op_ip text,disease_code numeric, insert_date  timestamp without time zone, recent_date  timestamp without time zone );
@@ -233,56 +289,7 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 
 */
 
-	$sql_1="insert into tbl_patient(p_name,gender,mobile,dob,mr_number,op_ip) values ($name,$gender,$mobile,$birth_date,$mr_num,$op_ip) returning uniq_id";
-
-	$res_1=pg_query($dbh,$sql_1);
 	
-	if(!$res_1)
-	{
-		echo pg_last_error($dbh);
-	}
-	else
-	{
-		echo "Records created successfully fro tbl_patient\n";
-	}
-
-	$res_data_1=pg_fetch_all($res_1);
-//print_r($res_data_1);
-		$uniqid=$id[0]['uniq_id'];
-
-
-	$sql_2="insert into tbl_disease(disease_code,disease_name,fk_uniq_id,complaints,present_medicine,ge,pa,eg,dre) values ($disease_code,$disease_name,$uniqid,$complaints,$present_medicine,$ge,$pa,$eg,$dre)";
-
-	$res_2=pg_query($dbh,$sql_2);
-	
-	if(!$res_2)
-	{
-		echo pg_last_error($dbh);
-	}
-	else
-	{
-		echo "Records created successfully for tbl_disease\n";
-	}
-
-
-	$sql_3="insert into tbl_med_history(fk_uniq_id,fk_disease_code,medical_history,surgical_history,rt_chemo_history) values ($uniqid,$disease_code,$medical_history,$surgical_history,$rt_chemo_history)";
-
-	$res_3=pg_query($dbh,$sql_3);
-	
-	if(!$res_3)
-	{
-		echo pg_last_error($dbh);
-	}
-	else
-	{
-		echo "Records created successfully for tbl_med_history\n";
-	}
-
-
-
-
-
-
 //medical codes
 
 
@@ -293,38 +300,7 @@ $fileTmpLoc = $_FILES["c_url_1"]["tmp_name"]; // File in the PHP tmp folder
 $fileType = $_FILES["c_url_1"]["type"]; // The type of file it is
 $fileSize = $_FILES["c_url_1"]["size"]; // File size in bytes
 
-/*
-
-print "code 1 is ".$code_1."\n";
-
-print "name is ".$fileName."\n";
-
-print "location is ".$fileTmpLoc."\n";
-
-print "file type is ".$fileType."\n";
-
-print "file size is ".$fileSize."\n";
-
-
-*/
-
 print "count is ".count($fileName)."\n";
-
-/*
-print "\n file fileName is \n";
-print_r($fileName);
-print "\n file fileName is \n";
-
-print "\n file fileTmpLoc is \n";
-print_r($fileTmpLoc);
-print "\n file fileTmpLoc is \n";
-
-print "\n file type is \n";
-print_r($fileType);
-print "\n file type is \n";
-*/
-
-$pid=5005;
 
 		for($i=0;$i<count($fileName);$i++)
 		{
@@ -345,7 +321,7 @@ $pid=5005;
 			print "\n=========\n";
 			*/
 
-			$url=$pid.".".$i.".".substr($fileType[$i],$j+1);
+			$url=$uniqid.".".$i.".".substr($fileType[$i],$j+1);
 			print "value at ".$i." is ".$url."\n";
 			//$new_url;
 			//$sql_1="insert into patient_url(pid,url) values ($pid,'$url') returning url";
@@ -362,17 +338,14 @@ $pid=5005;
 		//	move_uploaded_file($fileTmpLoc[$i],'/var/www/html/uploads/'.$fileName[$i]);	//office
 		}
 
+exit;
+/*
 
-
-
-
-
-
-
-
-
-
-	$sql_4="insert into tbl_med_codes_1(fk_uniq_id,code_1,code1_url) values ($uniqid,$code_1,$code1_url)" ;
+ fk_uniq_id | numeric | 
+ code_1     | numeric | 
+ code1_url  | text    | 
+*/
+	$sql_4="insert into tbl_med_codes_1(fk_uniq_id,code_1,code1_url) values ($uniqid,$code_1,$code1_url) returning $code1_url" ;
 	
 	$res_4=pg_query($dbh,$sql_4);
 
