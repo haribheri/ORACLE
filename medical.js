@@ -2,7 +2,7 @@
 $(document).ready(function(){
         
         $.ajax({
-            url:'http://localhost/murali/list.php',//listing php url
+            url:'http://localhost/list.php',//listing php url
             method: 'post',
             dataType: 'json',
             success: function (data) 
@@ -14,7 +14,7 @@ $(document).ready(function(){
 //                        alert(value.pat_name);
                     //val=value.pat_name
                         //content += '<li id=list-'+key +' onclick=get_deatils("'+value.pat_name+'");>';
-                        content += '<li id=list-'+key +' onclick=get_deatils("'+value.pid+'");>';
+                        content += '<li id=list-'+key +' onclick=get_deatils("'+value.uniq_id+'");>';
                         content += '<a href=javascript:void(0); class=tabopen tab-id=1 ripple=ripple ripple-color=#FFF>';
                         content += '<table cellpadding=0 cellspacing=0 width=100% id=bheri_tbl>';
                         content += '<tbody>';
@@ -23,12 +23,13 @@ $(document).ready(function(){
                         content +='<td width=100%>';
                         content += '<div class=mailList>';
                         content += '<div class=userContent>';
-                        content += '<h1>'+value.pat_name+'</h1>';
-                        content += '<p>'+value.disease+'</p>';
+                        content += '<h1>'+value.p_name+'</h1>';
+                        content += '<p>'+value.disease_name+'</p>';
+                        content += '<p>'+value.disease_code+'</p>';
             
                         content += '</div>';
                         content += '<div id=pid  style="display: none;">';
-                        content += '<p>'+value.pid+'</p>';
+                        content += '<p>'+value.uniq_id+'</p>';
                         content += '</div>';
         
                         content += '</div>';
@@ -55,12 +56,13 @@ $(document).ready(function(){
 
     function get_deatils(id)
     {    
+alert(hi);
         var obj ={};
         obj.pid=id;    
         //alert("value is "+obj.pid);
         $.ajax({
             type: "POST",
-            url:'http://localhost/murali/detail.php',  //detail pge url
+            url:'http://localhost/detail.php',  //detail pge url
             data: JSON.stringify(obj),
             dataType: 'json',
             success: function (data) 

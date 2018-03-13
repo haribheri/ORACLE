@@ -1,5 +1,5 @@
 <?php
-//sudo chown -R www-data:www-data /home/bheri/Desktop/img/
+//sudo chown -R www-data:www-data /home/srihari/Desktop/img/
 
 //PATIENT DETAILS
 	$name=$_POST["p_name"];
@@ -310,10 +310,10 @@ print "count is ".count($fileName)."\n";
 				if($fileType[$i][$j]=='/')
 					break;
 			}
-			print "\n=========\n";
-			$var=getimagesize($fileTmpLoc[$i]);
-			print_r($var);
-			print "\n=========\n";
+			//print "\n=========\n";
+			//$var=getimagesize($fileTmpLoc[$i]);
+			//print_r($var);
+			//print "\n=========\n";
 
 			/*print substr($fileName[$i],-4);
 			print "\n=========\n";
@@ -321,31 +321,12 @@ print "count is ".count($fileName)."\n";
 			print "\n=========\n";
 			*/
 
-			$url=$uniqid.".".$i.".".substr($fileType[$i],$j+1);
+			$url_1=$i.".".substr($fileType[$i],$j+1);
 			print "value at ".$i." is ".$url."\n";
 			//$new_url;
-			//$sql_1="insert into patient_url(pid,url) values ($pid,'$url') returning url";
-		//	$res_1 = pg_query($dbh, $sql_1);
-		//	if(!$res_1)
-        	//	{
-		//		echo pg_last_error($dbh);
-        	//	}
-			
-		//	$new_url=pg_fetch_all($res_1);
-		//	$new_url=$new_url[0]['url'];
-		//	$fileName[$i]=$new_url;
-			//move_uploaded_file($fileTmpLoc[$i],'/home/bheri/Desktop/img/'.$fileName[$i]);  //home
-		//	move_uploaded_file($fileTmpLoc[$i],'/var/www/html/uploads/'.$fileName[$i]);	//office
-		}
 
-exit;
-/*
 
- fk_uniq_id | numeric | 
- code_1     | numeric | 
- code1_url  | text    | 
-*/
-	$sql_4="insert into tbl_med_codes_1(fk_uniq_id,code_1,code1_url) values ($uniqid,$code_1,$code1_url) returning $code1_url" ;
+	echo $sql_4="insert into tbl_med_codes_1(fk_uniq_id,code_1,code1_url) values ($uniqid,$code_1,'$url_1') returning code1_url" ;
 	
 	$res_4=pg_query($dbh,$sql_4);
 
@@ -357,6 +338,26 @@ exit;
 	{
 		echo "Records created successfully for tbl_med_history\n";
 	}
+
+			
+			$new_url_1=pg_fetch_all($res_4);
+print_r($new_url_1);
+			$new_url_1=$new_url_1[0]['code1_url'];
+			print "final url is ".$new_url_1."\n";
+			$fileName[$i]=$new_url_1;
+// sudo chmod 777 /home/srihari/Desktop/img/
+			
+			move_uploaded_file($fileTmpLoc[$i],'/home/srihari/Desktop/img/'.$fileName[$i]);  //home
+		//	move_uploaded_file($fileTmpLoc[$i],'/var/www/html/uploads/'.$fileName[$i]);	//office
+		}
+
+exit;
+/*
+
+ fk_uniq_id | numeric | 
+ code_1     | numeric | 
+ code1_url  | text    | 
+*/
 
 
 	$sql_5="insert into tbl_med_codes_2(fk_uniq_id,code_2,code2_url) values ($uniqid,$code_2,$code2_url)" ;

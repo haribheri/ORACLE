@@ -1,15 +1,15 @@
 <?php
 
-	//$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=postgres password=1234") or die("pg_not connect");//home
-
-	$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
+	$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
+	//$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
 
 	$postData = json_decode(file_get_contents('php://input'), true);
 
 	$name=$postData["p_name"];
 	$pid=$postData["pid"];
-
-
+print "id is".$pid."\n";
+print "name is is".$name."\n";
+exit;
 	 $sql1="select pid, pat_name, disease, pat_mobile, pat_address, to_char(first_visit,'dd-MON-yyyy')first_visit , to_char(latest_visit,'dd-MON-yyyy')latest_visit,data from patient_details where pid=".$pid;
 
 	$sql2 ="select url from patient_url where pid=".$pid;
