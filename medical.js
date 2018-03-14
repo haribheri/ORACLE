@@ -2,7 +2,7 @@
 $(document).ready(function(){
         
         $.ajax({
-            url:'http://localhost/list.php',//listing php url
+            url:'http://localhost/murali/list.php',//listing php url
             method: 'post',
             dataType: 'json',
             success: function (data) 
@@ -11,7 +11,7 @@ $(document).ready(function(){
                         val='';
                         $.each(data, function(key,value)
                     {
-//                        alert(value.pat_name);
+                        //alert(value.uniq_id);
                     //val=value.pat_name
                         //content += '<li id=list-'+key +' onclick=get_deatils("'+value.pat_name+'");>';
                         content += '<li id=list-'+key +' onclick=get_deatils("'+value.uniq_id+'");>';
@@ -56,13 +56,13 @@ $(document).ready(function(){
 
     function get_deatils(id)
     {    
-alert(hi);
+	alert('hi');
         var obj ={};
         obj.pid=id;    
-        //alert("value is "+obj.pid);
+        alert("value is "+obj.pid);
         $.ajax({
             type: "POST",
-            url:'http://localhost/detail.php',  //detail pge url
+            url:'http://localhost/murali/detail.php',  //detail pge url
             data: JSON.stringify(obj),
             dataType: 'json',
             success: function (data) 
