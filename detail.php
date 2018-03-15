@@ -58,7 +58,7 @@ $sql1="select uniq_id,p_name,gender,mobile,dob,mr_number,op_ip,insert_date,recen
 
 
 
- $sql4="select code_1,code1_url from tbl_med_codes_1 where fk_uniq_id=$pid";
+	$sql4="select code_1,code1_url from tbl_med_codes_1 where fk_uniq_id=$pid";
 	$res4 = pg_query($dbh, $sql4);
 	if(!$res4)
 	{
@@ -71,7 +71,7 @@ $sql1="select uniq_id,p_name,gender,mobile,dob,mr_number,op_ip,insert_date,recen
 	        //$result2[$key]['code1_url'] = 'http://localhost/uploads/'.$result2[$key]['code1_url'];					
 	}
 
-$sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
+	$sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
 	$res5 = pg_query($dbh, $sql5);
 	if(!$res5)
 	{
@@ -80,13 +80,13 @@ $sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
 	$result5=pg_fetch_all($res5);
 	foreach ($result5 as $key => $value) 
 	{
-	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
-	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
+	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['code2_url'];
+	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code2_url'];					
 	}
 
 
 
-		$sql6="select code_3, code3_url from tbl_med_codes_3 where fk_uniq_id=$pid";
+	$sql6="select code_3, code3_url from tbl_med_codes_3 where fk_uniq_id=$pid";
 	$res6 = pg_query($dbh, $sql6);
 	if(!$res6)
 	{
@@ -95,8 +95,8 @@ $sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
 	$result6=pg_fetch_all($res6);
 	foreach ($result6 as $key => $value) 
 	{
-	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
-	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
+	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['code3_url'];
+	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code3_url'];					
 	}
 
 
@@ -110,8 +110,8 @@ $sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
 	$result7=pg_fetch_all($res7);
 	foreach ($result7 as $key => $value) 
 	{
-	        //$result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
-	        $result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
+	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['code4_url'];
+	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code4_url'];					
 	}
 
 
@@ -125,8 +125,8 @@ $sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
 	$result8=pg_fetch_all($res8);
 	foreach ($result8 as $key => $value) 
 	{
-	        //$result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
-	        $result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
+	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['code5_url'];
+	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code5_url'];					
 	}
 
 
