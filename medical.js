@@ -2,7 +2,7 @@
 $(document).ready(function(){
         
         $.ajax({
-            url:'http://localhost/murali/list.php',//listing php url
+            url:'http://localhost/list.php',//listing php url
             method: 'post',
             dataType: 'json',
             success: function (data) 
@@ -56,83 +56,83 @@ $(document).ready(function(){
 
     function get_deatils(id)
     {    
-	alert('hi');
+//	alert('hi');
         var obj ={};
         obj.pid=id;    
-        alert("value is "+obj.pid);
+//        alert("value is "+obj.pid);
         $.ajax({
             type: "POST",
-            url:'http://localhost/murali/detail.php',  //detail pge url
+            url:'http://localhost/detail.php',  //detail pge url
             data: JSON.stringify(obj),
             dataType: 'json',
             success: function (data) 
                 {
+			alert(data);
+                    	content1= '';
+                    	$.each(data, function(key,value)
+                    	{
+                        	if(typeof value.pat_name!= 'undefined')                        
+                        	{
+					content1 += '<div>';
+					content1 +='<table style=width:100%; class=chattbl>';
+					content1 += '<tbody>';
+					content1 +='<tr><td calss=pat_name>'+value.p_name+'</td></tr>';
+					content1 +='</tbody>';    
+					content1 +='</table>';
+					content1 +='</div>';
+					content1 +='<div style=float:left>';
+					content1 +='<table style=width:100%; class=chattbl>';
+					content1 +='<tbody>';
+					content1 +='<tr class=table-row bo_m2 cp>';
+					content1 +='<td class=td_sub>';
+					content1 +='<table class=chattbl_in>';
+					content1 +='<tbody>';
+					content1 +='<tr>';
+					content1 +='<td> Last visited on : '+value.latest_visit+'</td>';
+					content1 +='</tr>';
+					content1 +='<tr>';
+					content1 +='<td>Came for : '+value.disease+'</td>';
+					content1 +='</tr>';
+					content1 +='</tbody>';
+					content1 +='</table>';
+					content1 +='</td>';
+					content1 +='</tr>';
+					content1 +='</tbody>';
+					content1 +='</table>'
+					content1 +='</div>';
+                        	}
+                    	});
+                    	$('#fetch_header').html(content1);
 
-                    content1= '';
-                    $.each(data, function(key,value)
-                    {
-                        if(typeof value.pat_name!= 'undefined')                        
-                        {
-                        content1 += '<div>';
-                            content1 +='<table style=width:100%; class=chattbl>';
-                                content1 += '<tbody>';
-                                    content1 +='<tr><td calss=pat_name>'+value.pat_name+'</td></tr>';
-                                content1 +='</tbody>';    
-                            content1 +='</table>';
-                        content1 +='</div>';
-                        content1 +='<div style=float:left>';
-                            content1 +='<table style=width:100%; class=chattbl>';
-                                content1 +='<tbody>';
-                                    content1 +='<tr class=table-row bo_m2 cp>';
-                                        content1 +='<td class=td_sub>';
-                                            content1 +='<table class=chattbl_in>';
-                                                content1 +='<tbody>';
-                                                    content1 +='<tr>';
-                                                    content1 +='<td> Last visited on : '+value.latest_visit+'</td>';
-                                                    content1 +='</tr>';
-                                                    content1 +='<tr>';
-                                                        content1 +='<td>Came for : '+value.disease+'</td>';
-                                                    content1 +='</tr>';
-                                                content1 +='</tbody>';
-                                            content1 +='</table>';
-                                        content1 +='</td>';
-                                    content1 +='</tr>';
-                                content1 +='</tbody>';
-                            content1 +='</table>'
-                        content1 +='</div>';
-                        }
-                    });
-                    $('#fetch_header').html(content1);
-
-                    content = '';
-                    $.each(data, function(key,value)
-                    {
+                    	content = '';
+                    	$.each(data, function(key,value)
+                    	{	
                         
-                        if(typeof value.disease!= 'undefined')                        
-                        {
-                            content += '<li>';
-                            content += '<div  >';
-                                content += '<table class=chattbl width=100%>';
-                                content += '<tbody> ';
-                                    content += '<tr>';
-                                        content += '<td width=100%>';
+                        	if(typeof value.disease!= 'undefined')                        
+                        	{
+                        	    content += '<li>';
+                        	    content += '<div  >';
+                        	        content += '<table class=chattbl width=100%>';
+                        	        content += '<tbody> ';
+                        	            content += '<tr>';
+                        	                content += '<td width=100%>';
                                             content += '<div>';
-                                            content += '<h4>'+value.disease+'</h4>';
-                                            content += '<p>'+value.pat_mobile+'</p>';
+                                            content += '<h4>'+value.disease_code+'</h4>';
+                                            content += '<p>'+value.mobile+'</p>';
                                             content += '</div>';
                                             content += '<div>';
                                             content += '<p>'+value.pat_address+'</p>';
                                             content += '</div>';
                                         content += '</td>';
-                                    content += '</tr>';
-                                content += '</tbody>';
-                            content += '</table>';
-                            content += '</div>';
-//                            content += '<div>';
-                        }
-                        content += '</li>';
-                        if(typeof value.url!= 'undefined')                        
-                        {                        
+                        	            content += '</tr>';
+                        	        content += '</tbody>';
+                        	    content += '</table>';
+                        	    content += '</div>';
+//                      	      content += '<div>';
+                        	}
+                        	content += '</li>';
+                        	if(typeof value.url!= 'undefined')                        
+                        	{                        
 
 //                            content += '<table style=width:100%; class=chattbl>';
 //                            content += '<tbody>';
@@ -147,10 +147,6 @@ $(document).ready(function(){
                             content += '<div id=caption></div>';
                             content += '</div>';
 
-
-
-
-
 //                            content    += '<img src='+value.url+' style=border-radius: 8px;>';
 
 //                            content    += '<p>'+value.url+'</p>';
@@ -164,7 +160,7 @@ $(document).ready(function(){
                         content += '</div>';
                         //content +='</li>' ;
 
-                    });
+	                    });
 //alert(content);
                     $('#fetch_details').html(content);
                 }

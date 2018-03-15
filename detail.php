@@ -1,13 +1,13 @@
 <?php
 
-	$dbh = pg_connect("host=localhost port=5433 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
+	$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
 	//$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
 
 	$postData = json_decode(file_get_contents('php://input'), true);
 
 //	$name=$postData["p_name"];
 	$pid=$postData["pid"];
-print "id is".$pid."\n";
+//print "id is".$pid."\n";
 //print "name is is".$name."\n";
 
 
@@ -29,14 +29,13 @@ tbl_med_codes_4(fk_uniq_id numeric,code_4 numeric,code4_url text);
 tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 */
 
-	$sql1="select uniq_id,p_name,gender,mobile,pat_address,dob,mr_number,op_ip,insert_date,recent_date from tbl_patient where  where fk_uniq_id=$pid";
+$sql1="select uniq_id,p_name,gender,mobile,dob,mr_number,op_ip,insert_date,recent_date from tbl_patient where  uniq_id=$pid";
 	$res1 = pg_query($dbh, $sql1);
 	if(!$res1)
 	{
 		echo pg_last_error($dbh);
 	}
 	$result1=pg_fetch_all($res1);
-
 
 
 	$sql2="select disease_code,complaints, present_medicine,ge,pa,eg,dre from tbl_disease where fk_uniq_id=$pid";
@@ -47,8 +46,7 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 	}
 	$result2=pg_fetch_all($res2);
 
-
-	$sql3="select medical_history,surgical_history,rt_chemo_history from tbl_med_history where fk_uniq_id=$pid";
+		$sql3="select medical_history,surgical_history,rt_chemo_history from tbl_med_history where fk_uniq_id=$pid";
 	$res3 = pg_query($dbh, $sql3);
 	if(!$res3)
 	{
@@ -59,7 +57,8 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 
 
 
-	$sql4="select code_1, code1_url from tbl_med_codes_1 where fk_uniq_id=$pid";
+
+ $sql4="select code_1,code1_url from tbl_med_codes_1 where fk_uniq_id=$pid";
 	$res4 = pg_query($dbh, $sql4);
 	if(!$res4)
 	{
@@ -68,13 +67,11 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 	$result4=pg_fetch_all($res4);
 	foreach ($result4 as $key => $value) 
 	{
-	        //$result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
-	        $result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
+	        $result[$key]['code1_url'] = '/home/bheri/Desktop/img/'.$result[$key]['code1_url'];
+	        //$result2[$key]['code1_url'] = 'http://localhost/uploads/'.$result2[$key]['code1_url'];					
 	}
 
-
-
-	$sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
+$sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
 	$res5 = pg_query($dbh, $sql5);
 	if(!$res5)
 	{
@@ -83,13 +80,13 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 	$result5=pg_fetch_all($res5);
 	foreach ($result5 as $key => $value) 
 	{
-	        //$result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
-	        $result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
+	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
+	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
 	}
 
 
 
-	$sql6="select code_3, code3_url from tbl_med_codes_3 where fk_uniq_id=$pid";
+		$sql6="select code_3, code3_url from tbl_med_codes_3 where fk_uniq_id=$pid";
 	$res6 = pg_query($dbh, $sql6);
 	if(!$res6)
 	{
@@ -98,8 +95,8 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 	$result6=pg_fetch_all($res6);
 	foreach ($result6 as $key => $value) 
 	{
-	        //$result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
-	        $result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
+	        $result[$key]['url'] = '/home/bheri/Desktop/img/'.$result[$key]['url'];
+	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['url'];					
 	}
 
 
@@ -119,7 +116,7 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 
 
 
-	$sql8="select code_5,code5_url from tbl_med_codes_5 where fk_uniq_id=$pid"
+	$sql8="select code_5,code5_url from tbl_med_codes_5 where fk_uniq_id=$pid";
 	$res8 = pg_query($dbh, $sql8);
 	if(!$res8)
 	{

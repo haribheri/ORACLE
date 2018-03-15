@@ -28,21 +28,21 @@ $total = count($_FILES['c_url_1']['name']);
 
 
 
-print "count is ".$total."\n";
+//print "count is ".$total."\n";
 
 
 	$medical_history=$_POST["medical_history"];
 	$surgical_history=$_POST["surgical_history"];
 	$rt_chemo_history=$_POST["rt_chemo_history"];
 
-print "name is ".$name."\n";
-print "gender is ".$gender."\n";
-print "disease code is". $disease_code."\n";
-print "med history is ".$medical_history."\n";
+//print "name is ".$name."\n";
+//print "gender is ".$gender."\n";
+//print "disease code is". $disease_code."\n";
+//print "med history is ".$medical_history."\n";
 
 
 
-	$dbh = pg_connect("host=localhost port=5433 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
+	$dbh = pg_connect("host=localhost port=5432 user=bheri dbname=medical password=1234") or die("pg_not connect");//home
 	//$dbh = pg_connect("host=localhost port=5433 user=postgres dbname=bheri password=123456") or die("pg_not connect"); //office
 
 /*
@@ -301,11 +301,12 @@ $fileTmpLoc_1 = $_FILES["c_url_1"]["tmp_name"]; // File in the PHP tmp folder
 $fileType_1 = $_FILES["c_url_1"]["type"]; // The type of file it is
 $fileSize_1 = $_FILES["c_url_1"]["size"]; // File size in bytes
 
-print "count is ".count($fileName_1)."\n";
+//print "count is ".count($fileName_1)."\n";
 
 		for($i=0;$i<count($fileName_1);$i++)
 		{
-			for($j=0;$j<strlen($fileType[$i]);$j++)
+
+			for($j=0;$j<strlen($fileType_1[$i]);$j++)
 			{
 	
 				if($fileType_1[$i][$j]=='/')
@@ -361,12 +362,12 @@ print "count is ".count($fileName_1)."\n";
 			$new_url_1=pg_fetch_all($res_4);
 			print_r($new_url_1);
 			$new_url_1=$new_url_1[0]['code1_url'];
-			print "final url is ".$new_url_1."\n";
+			print "bheri url is ".$new_url_1."\n";
 			$fileName_1[$i]=$new_url_1;
 			// sudo chmod 777 /home/srihari/Desktop/img/
 			
-			//move_uploaded_file($fileTmpLoc_1[$i],'/home/srihari/Desktop/img/'.$fileName_1[$i]);  //home
-			move_uploaded_file($fileTmpLoc_1[$i],'/var/www/html/uploads/'.$fileName_1[$i]);	//office
+			move_uploaded_file($fileTmpLoc_1[$i],'/home/srihari/Desktop/img/'.$fileName_1[$i]);  //home
+			//move_uploaded_file($fileTmpLoc_1[$i],'/var/www/html/uploads/'.$fileName_1[$i]);	//office
 		}
 
 
@@ -444,8 +445,8 @@ if (isset($url_2) && $url_2 !='')
 			$fileName_2[$i]=$new_url_2;
 			// sudo chmod 777 /home/srihari/Desktop/img/
 			
-			//move_uploaded_file($fileTmpLoc_2[$i],'/home/srihari/Desktop/img/'.$fileName_2[$i]);  //home
-			move_uploaded_file($fileTmpLoc_2[$i],'/var/www/html/uploads/'.$fileName_2[$i]);	//office
+			move_uploaded_file($fileTmpLoc_2[$i],'/home/srihari/Desktop/img/'.$fileName_2[$i]);  //home
+			//move_uploaded_file($fileTmpLoc_2[$i],'/var/www/html/uploads/'.$fileName_2[$i]);	//office
 		}
 
 
@@ -523,8 +524,8 @@ print "count is ".count($fileName_3)."\n";
 			$fileName_3[$i]=$new_url_3;
 			// sudo chmod 777 /home/srihari/Desktop/img/
 			
-			//move_uploaded_file($fileTmpLoc_3[$i],'/home/srihari/Desktop/img/'.$fileName_3[$i]);  //home
-			move_uploaded_file($fileTmpLoc_3[$i],'/var/www/html/uploads/'.$fileName_3[$i]);	//office
+			move_uploaded_file($fileTmpLoc_3[$i],'/home/srihari/Desktop/img/'.$fileName_3[$i]);  //home
+			//move_uploaded_file($fileTmpLoc_3[$i],'/var/www/html/uploads/'.$fileName_3[$i]);	//office
 		}
 
 /************************************code-4*********************************/
@@ -601,8 +602,8 @@ print "count is ".count($fileName_4)."\n";
 			$fileName_4[$i]=$new_url_4;
 			// sudo chmod 777 /home/srihari/Desktop/img/
 			
-			//move_uploaded_file($fileTmpLoc_4[$i],'/home/srihari/Desktop/img/'.$fileName_4[$i]);  //home
-			move_uploaded_file($fileTmpLoc_4[$i],'/var/www/html/uploads/'.$fileName_4[$i]);	//office
+			move_uploaded_file($fileTmpLoc_4[$i],'/home/srihari/Desktop/img/'.$fileName_4[$i]);  //home
+			//move_uploaded_file($fileTmpLoc_4[$i],'/var/www/html/uploads/'.$fileName_4[$i]);	//office
 		}
 
 
@@ -679,7 +680,7 @@ print "count is ".count($fileName_5)."\n";
 			$fileName_5[$i]=$new_url_5;
 			// sudo chmod 777 /home/srihari/Desktop/img/
 			
-			//move_uploaded_file($fileTmpLoc_5[$i],'/home/srihari/Desktop/img/'.$fileName_5[$i]);  //home
-			move_uploaded_file($fileTmpLoc_5[$i],'/var/www/html/uploads/'.$fileName_5[$i]);	//office
+			move_uploaded_file($fileTmpLoc_5[$i],'/home/srihari/Desktop/img/'.$fileName_5[$i]);  //home
+			//move_uploaded_file($fileTmpLoc_5[$i],'/var/www/html/uploads/'.$fileName_5[$i]);	//office
 		}                                                                                                                                                                                                                     
 ?>
