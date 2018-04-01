@@ -56,7 +56,6 @@ $(document).ready(function(){
 
     function get_deatils(id)
     {    
-//	alert('hi');
         var obj ={};
         obj.pid=id;    
 //        alert("value is "+obj.pid);
@@ -67,18 +66,58 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data) 
                 {
-			alert(data);
+
                     	content1= '';
                     	$.each(data, function(key,value)
                     	{
-                        	if(typeof value.pat_name!= 'undefined')                        
-                        	{
+
+                        	//if(typeof value.p_name!= 'undefined')                        
+                        	//{
 					content1 += '<div>';
-					content1 +='<table style=width:100%; class=chattbl>';
+					content1 +='<table style=width:100%;>';
 					content1 += '<tbody>';
-					content1 +='<tr><td calss=pat_name>'+value.p_name+'</td></tr>';
+					if(value.p_name!=null)
+					{
+						content1 +='<tr><td>'+value.p_name+'</td>';
+					}
+					if(value.gender!=null)
+					{
+						content1 +='<td>'+value.gender+'</td></tr>';
+					}
+					if(value.mobile!=null)
+					{
+						content1 +='<tr><td class=mobil> contact num:-'+value.mobile+'</td></tr>';
+					}
 					content1 +='</tbody>';    
 					content1 +='</table>';
+
+					content1 +='<table style=width:100%; class=chattbl>';
+					content1 += '<tbody>';
+					if(value.mr_number!=null && typeof value.mr_number!= 'undefined')
+					{
+						content1 +='<tr><td calss=mr_num>'+value.mr_number+'</td></tr>';
+					}
+					if(value.op_ip!= null && typeof value.op_ip!= 'undefined')               
+					{
+						content1 +='<tr><td class=op_ip>'+value.op_ip+'</td></tr>';
+					}             
+					if(value.pa!= null && typeof value.pa!= 'undefined')               
+					{
+						content1 +='<td class=pa>'+value.pa+'</td>';
+					}
+
+					if(value.eg!= null && typeof value.eg!= 'undefined')               
+					{
+						content1 +='<td class=eg>'+value.eg+'</td>';
+					}
+					if(value.dre!= null && typeof value.dre!= 'undefined')               
+					{
+						content1 +=	'<td class=dre>'+value.dre+'</td></tr>';
+					}
+					content1 +='</tbody>';    
+
+					content1 +='</table>';
+
 					content1 +='</div>';
 					content1 +='<div style=float:left>';
 					content1 +='<table style=width:100%; class=chattbl>';
@@ -88,10 +127,21 @@ $(document).ready(function(){
 					content1 +='<table class=chattbl_in>';
 					content1 +='<tbody>';
 					content1 +='<tr>';
-					content1 +='<td> Last visited on : '+value.latest_visit+'</td>';
+					if(value.insert_date !='undefined' && value.insert_date !=null)
+					{
+						content1 +='<td> Last visited on : '+value.insert_date+'</td>';
+					}
 					content1 +='</tr>';
 					content1 +='<tr>';
-					content1 +='<td>Came for : '+value.disease+'</td>';
+
+					if(value.disease!='undefined' && value.disease !=null)
+					{
+						content1 +='<td>Came for : '+value.disease+'</td>';
+					}
+					if(value.disease_code!='undefined' && value.disease_code!=null)
+					{
+						content1 +='<td>Code is : '+value.disease_code+'</td>';
+					}
 					content1 +='</tr>';
 					content1 +='</tbody>';
 					content1 +='</table>';
@@ -100,7 +150,7 @@ $(document).ready(function(){
 					content1 +='</tbody>';
 					content1 +='</table>'
 					content1 +='</div>';
-                        	}
+                        	
                     	});
                     	$('#fetch_header').html(content1);
 
@@ -116,10 +166,10 @@ $(document).ready(function(){
                         	        content += '<tbody> ';
                         	            content += '<tr>';
                         	                content += '<td width=100%>';
-                                            content += '<div>';
-                                            content += '<h4>'+value.disease_code+'</h4>';
-                                            content += '<p>'+value.mobile+'</p>';
-                                            content += '</div>';
+  //                                          content += '<div>';
+//                                            content += '<h4>'+value.disease_code+'</h4>';
+                                            //content += '<p>'+value.mobile+'</p>';
+    //                                        content += '</div>';
                                             content += '<div>';
                                             content += '<p>'+value.pat_address+'</p>';
                                             content += '</div>';
@@ -131,30 +181,94 @@ $(document).ready(function(){
 //                      	      content += '<div>';
                         	}
                         	content += '</li>';
-                        	if(typeof value.url!= 'undefined')                        
+                        	if(typeof value.code1_url!= 'undefined' && value.code1_url!=null)                        
                         	{                        
 
-//                            content += '<table style=width:100%; class=chattbl>';
-//                            content += '<tbody>';
-//                            content += '<tr>';
-//                            content += '<td>';
+	                            content += '<table style=width:100%; class=chattbl>';
+	                            content += '<tbody>';
+	                            content += '<tr>';
+	                            content += '<td>';
+				    if(value.code1_url!=null)
+				    {
+	                            	content += '<img src='+value.code1_url+'>';
+				    }
+	                            content += '</td>';
+        	                    content += '</tr>';
+        	                    content += '</tbody>';
+                 	            content += '</table>';
+                 	       }
+
+				if(typeof value.code2_url!= 'undefined' && value.code2_url!=null)                        
+                        	{                        
+
+	                            content += '<table style=width:100%; class=chattbl>';
+	                            content += '<tbody>';
+	                            content += '<tr>';
+	                            content += '<td>';
+				    if(value.code2_url!=null)
+				    {
+	                            	content    += '<img src='+value.code2_url+' style=border-radius: 8px;>';
+				    }
+	                            content    += '</td>';
+        	                    content += '</tr>';
+        	                    content += '</tbody>';
+                 	            content += '</table>';
+                 	       }
+
+				if(typeof value.code3_url!= 'undefined' &&  value.code3_url!=null)                        
+                        	{                        
+
+	                            content += '<table style=width:100%; class=chattbl>';
+	                            content += '<tbody>';
+	                            content += '<tr>';
+	                            content += '<td>';
+			            if(code3_url !=null)
+				    {
+	                            	content    += '<img src='+value.code3_url+' style=border-radius: 8px;>';
+				    }
+
+	                            content    += '</td>';
+        	                    content += '</tr>';
+        	                    content += '</tbody>';
+                 	            content += '</table>';
+                 	       }
 
 
-                            content += '<img id=img-'+key+' src='+value.url+' onclick=myfun('+key+');>';
-                            content +='<div id=myModal class=modal>';
-                            content +=  '<span class=close>&times;</span>';
-                            content +=  '<img class=modal-content id=img01>';
-                            content += '<div id=caption></div>';
-                            content += '</div>';
+				if(typeof value.code4_url!= 'undefined' &&  value.code4_url!=null)                        
+                        	{                        
 
-//                            content    += '<img src='+value.url+' style=border-radius: 8px;>';
+	                            content += '<table style=width:100%; class=chattbl>';
+	                            content += '<tbody>';
+	                            content += '<tr>';
+	                            content += '<td>';
+				if(value.code4_url!=null)
+				{
+	                            content    += '<img src='+value.code4_url+' style=border-radius: 8px;>';
+				}
+	                            content    += '</td>';
+        	                    content += '</tr>';
+        	                    content += '</tbody>';
+                 	            content += '</table>';
+                 	       }
 
-//                            content    += '<p>'+value.url+'</p>';
-//                            content    += '</td>';
-//                            content += '</tr>';
-//                            content += '</tbody>';
-//                            content += '</table>';
-                        }
+				if(typeof value.code5_url!= 'undefined' &&  value.code5_url!=null)                        
+                        	{                        
+
+	                            content += '<table style=width:100%; class=chattbl>';
+	                            content += '<tbody>';
+	                            content += '<tr>';
+	                            content += '<td>';
+				    if(code5_url!=null)
+				    {
+	                            	content += '<img src='+value.code5_url+' style=border-radius: 8px;>';
+				    }
+	                            content += '</td>';
+        	                    content += '</tr>';
+        	                    content += '</tbody>';
+                 	            content += '</table>';
+                 	       }
+
+
 //                        content += '</div>';
                         
                         content += '</div>';

@@ -368,7 +368,9 @@ print "count for code-1 is ".count($fileName_1)."\n";
 				$fileName_1[$i]=$new_url_1;
 				// sudo chmod 777 /home/srihari/Desktop/img/
 			
-				move_uploaded_file($fileTmpLoc_1[$i],'/home/srihari/Desktop/img/'.$fileName_1[$i]);  //home
+				move_uploaded_file($fileTmpLoc_1[$i],'/var/www/html/img/'.$fileName_1[$i]);  //home
+
+				//move_uploaded_file($fileTmpLoc_1[$i],'/home/srihari/Desktop/img/'.$fileName_1[$i]);  //home
 				//move_uploaded_file($fileTmpLoc_1[$i],'/var/www/html/uploads/'.$fileName_1[$i]);	//office
 			}
 		}
@@ -451,7 +453,8 @@ print "count for code-2 is ".count($fileName_2)."\n";
 				$fileName_2[$i]=$new_url_2;
 				// sudo chmod 777 /home/srihari/Desktop/img/
 			
-				move_uploaded_file($fileTmpLoc_2[$i],'/home/srihari/Desktop/img/'.$fileName_2[$i]);  //home
+				move_uploaded_file($fileTmpLoc_2[$i],'/var/www/html/img/'.$fileName_2[$i]);  //home
+				//move_uploaded_file($fileTmpLoc_2[$i],'/home/srihari/Desktop/img/'.$fileName_2[$i]);  //home
 				//move_uploaded_file($fileTmpLoc_2[$i],'/var/www/html/uploads/'.$fileName_2[$i]);	//office
 			}
 		}
@@ -530,8 +533,8 @@ print "count for code-3 is ".count($fileName_3)."\n";
 				print "final url is ".$new_url_3."\n";
 				$fileName_3[$i]=$new_url_3;
 				// sudo chmod 777 /home/srihari/Desktop/img/
-			
-				move_uploaded_file($fileTmpLoc_3[$i],'/home/srihari/Desktop/img/'.$fileName_3[$i]);  //home
+				move_uploaded_file($fileTmpLoc_3[$i],'/var/www/html/img/'.$fileName_3[$i]);  //home
+				//move_uploaded_file($fileTmpLoc_3[$i],'/home/srihari/Desktop/img/'.$fileName_3[$i]);  //home
 				//move_uploaded_file($fileTmpLoc_3[$i],'/var/www/html/uploads/'.$fileName_3[$i]);	//office
 			}
 		}
@@ -615,8 +618,8 @@ print "count for code-4 is ".count($fileName_4)."\n";
 				print "final url is ".$new_url_4."\n";
 				$fileName_4[$i]=$new_url_4;
 				//sudo chmod 777 /home/srihari/Desktop/img/
-			
-				move_uploaded_file($fileTmpLoc_4[$i],'/home/srihari/Desktop/img/'.$fileName_4[$i]);  //home
+				move_uploaded_file($fileTmpLoc_4[$i],'/var/www/html/img/'.$fileName_4[$i]);  //home
+//				move_uploaded_file($fileTmpLoc_4[$i],'/home/srihari/Desktop/img/'.$fileName_4[$i]);  //home
 				//move_uploaded_file($fileTmpLoc_4[$i],'/var/www/html/uploads/'.$fileName_4[$i]);	//office
 			}
 		}
@@ -689,8 +692,8 @@ print "count for code-5 is ".count($fileTmpLoc_5)."\n";
 				print "final url is ".$new_url_5."\n";
 				$fileName_5[$i]=$new_url_5;
 				// sudo chmod 777 /home/srihari/Desktop/img/
-			
-				move_uploaded_file($fileTmpLoc_5[$i],'/home/srihari/Desktop/img/'.$fileName_5[$i]);  //home
+				move_uploaded_file($fileTmpLoc_5[$i],'/var/www/html/img/'.$fileName_5[$i]);  //home
+				//move_uploaded_file($fileTmpLoc_5[$i],'/home/srihari/Desktop/img/'.$fileName_5[$i]);  //home
 				//move_uploaded_file($fileTmpLoc_5[$i],'/var/www/html/uploads/'.$fileName_5[$i]);	//office
 			}
 }                                                                                                                                                                                                                     
