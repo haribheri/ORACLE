@@ -128,10 +128,6 @@ $sql_1="insert into tbl_patient(p_name,gender,mobile,dob,mr_number,op_ip) values
 //print "o/p is ".$uniqid.'\n';
 
 
-
-
-
-
 	if (isset($_POST['disease_code']) && $_POST['disease_code'] !='')
 	{
 		$disease_code="'".$_POST['disease_code']."'";
@@ -149,8 +145,6 @@ $sql_1="insert into tbl_patient(p_name,gender,mobile,dob,mr_number,op_ip) values
 	{
 		$disease_name='null';
 	}
-
-
 
 	if (isset($_POST['complaints']) && $_POST['complaints'] !='')
 	{
