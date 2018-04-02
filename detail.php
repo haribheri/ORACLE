@@ -70,7 +70,8 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 		$result3=$result2;
 
 
-	$sql4="select code_1,code1_url from tbl_med_codes_1 where fk_uniq_id=$pid";
+	//$sql4="select code_1,code1_url from tbl_med_codes_1 where fk_uniq_id=$pid";
+	$sql4="select code_1, string_agg(code1_url,',')code1_url from tbl_med_codes_1 where fk_uniq_id=$pid group by code_1";
 	$res4 = pg_query($dbh, $sql4);
 	if(!$res4)
 	{
@@ -79,13 +80,7 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 	$result4=pg_fetch_all($res4);
 
 
-	foreach ($result4 as $key => $value) 
-	{
-	        $result4[$key]['code1_url'] = 'http://localhost/img/'.$result4[$key]['code1_url'];
-//	        $result4[$key]['code1_url'] = '/home/srihari/Desktop/img/'.$result4[$key]['code1_url'];
-	        //$result2[$key]['code1_url'] = 'http://localhost/uploads/'.$result2[$key]['code1_url'];					
 
-	}
 
 	if($result4!=NULL)
 		$result4=array_merge($result3,$result4);
@@ -93,19 +88,13 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 		$result4=$result3;
 
 
-	$sql5="select code_2, code2_url from tbl_med_codes_2 where fk_uniq_id=$pid";
+	$sql5="select code_2, string_agg(code2_url,',')code2_url from tbl_med_codes_2 where fk_uniq_id=$pid group by code_2";
 	$res5 = pg_query($dbh, $sql5);
 	if(!$res5)
 	{
 		echo pg_last_error($dbh);
 	}
 	$result5=pg_fetch_all($res5);
-	foreach ($result5 as $key => $value) 
-	{
-	        $result5[$key]['code2_url'] = 'http://localhost/img/'.$result5[$key]['code2_url'];
-	        //$result5[$key]['code2_url'] = '/home/srihari/Desktop/img/'.$result5[$key]['code2_url'];
-	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code2_url'];					
-	}
 
 	if($result5!=NULL)
 		$result5=array_merge($result4,$result5);
@@ -113,39 +102,28 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 		$result5=$result4;
 
 
-	$sql6="select code_3, code3_url from tbl_med_codes_3 where fk_uniq_id=$pid";
+	$sql6="select code_3, string_agg(code3_url,',')code3_url from tbl_med_codes_3 where fk_uniq_id=$pid group by code_3";
 	$res6 = pg_query($dbh, $sql6);
 	if(!$res6)
 	{
 		echo pg_last_error($dbh);
 	}
 	$result6=pg_fetch_all($res6);
-	foreach ($result6 as $key => $value) 
-	{
-	        $result6[$key]['code3_url'] = 'http://localhost/img/'.$result6[$key]['code3_url'];
-//	        $result6[$key]['code3_url'] = '/home/srihari/Desktop/img/'.$result6[$key]['code3_url'];
-	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code3_url'];					
-	}
-
+	
 	if($result6!=NULL)
 		$result6=array_merge($result5,$result6);
 	else
 		$result6=$result5;
 
 
-	$sql7="select code_4, code4_url from tbl_med_codes_4 where fk_uniq_id=$pid";
+	$sql7="select code_4, string_agg(code4_url,',')code4_url from tbl_med_codes_4 where fk_uniq_id=$pid group by code_4";
 	$res7 = pg_query($dbh, $sql7);
 	if(!$res7)
 	{
 		echo pg_last_error($dbh);
 	}
 	$result7=pg_fetch_all($res7);
-	foreach ($result7 as $key => $value) 
-	{
-	        $result7[$key]['code4_url'] = 'http://localhost/img/'.$result7[$key]['code4_url'];
-	        //$result7[$key]['code4_url'] = '/home/srihari/Desktop/img/'.$result7[$key]['code4_url'];
-	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code4_url'];					
-	}
+	
 
 	if($result7!=NULL)
 		$result7=array_merge($result6,$result7);
@@ -154,20 +132,14 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 
 
 
-	$sql8="select code_5,code5_url from tbl_med_codes_5 where fk_uniq_id=$pid";
+	$sql8="select code_5,string_agg(code5_url,',')code5_url from tbl_med_codes_5 where fk_uniq_id=$pid group by code_5";
 	$res8 = pg_query($dbh, $sql8);
 	if(!$res8)
 	{
 		echo pg_last_error($dbh);
 	}
 	$result8=pg_fetch_all($res8);
-	foreach ($result8 as $key => $value) 
-	{
-	        $result8[$key]['code5_url'] = 'http://localhost/img/'.$result8[$key]['code5_url'];
-	        //$result8[$key]['code5_url'] = '/home/srihari/Desktop/img/'.$result8[$key]['code5_url'];
-	        //$result2[$key]['url'] = 'http://localhost/uploads/'.$result2[$key]['code5_url'];					
-	}
-
+	
 
 	if($result8!=NULL)
 		$result8=array_merge($result7,$result8);
@@ -175,6 +147,7 @@ tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
 		$result8=$result7;
 
 	print json_encode($result8);
+
 	pg_close($dbh);
 
 ?>

@@ -99,9 +99,6 @@ function getAge(dateString) {
                     	content1= '';
                     	$.each(data, function(key,value)
                     	{
-
-                        	//if(typeof value.p_name!= 'undefined')                        
-                        	//{
 					content1 += '<div>';
 					content1 +='<table style=width:100%;>';
 					content1 += '<tbody>';
@@ -130,7 +127,7 @@ function getAge(dateString) {
 					content1 += '<tbody>';
 					if(value.mr_number!=null && typeof value.mr_number!= 'undefined')
 					{
-						content1 +='<tr><td calss=mr_num>'+value.mr_number+'</td></tr>';
+						content1 +='<tr><td calss=mr_num>mr num:- '+value.mr_number+'</td></tr>';
 					}
 					if(value.op_ip!= null && typeof value.op_ip!= 'undefined')               
 					{
@@ -138,29 +135,26 @@ function getAge(dateString) {
 					}             
 					if(value.pa!= null && typeof value.pa!= 'undefined')               
 					{
-						content1 +='<td class=pa>'+value.pa+'</td>';
+						content1 +='<td class=pa>pa :- '+value.pa+'</td>';
 					}
 
 					if(value.eg!= null && typeof value.eg!= 'undefined')               
 					{
-						content1 +='<td class=eg>'+value.eg+'</td>';
+						content1 +='<td class=eg>eg :- '+value.eg+'</td>';
 					}
 					if(value.dre!= null && typeof value.dre!= 'undefined')               
 					{
-						content1 +='<td class=dre>'+value.dre+'</td></tr>';
+						content1 +='<td class=dre>dre :- '+value.dre+'</td></tr>';
 					}
 					content1 +='</tbody>';    
-
 					content1 +='</table>';
-
 					content1 +='</div>';
+
+
 					content1 +='<div style=float:left>';
 					content1 +='<table style=width:100%; class=chattbl>';
 					content1 +='<tbody>';
-					content1 +='<tr class=table-row bo_m2 cp>';
-					content1 +='<td class=td_sub>';
-					content1 +='<table class=chattbl_in>';
-					content1 +='<tbody>';
+
 					content1 +='<tr>';
 					if(value.insert_date !='undefined' && value.insert_date !=null)
 					{
@@ -180,37 +174,38 @@ function getAge(dateString) {
 
 					if(value.complaints !=null && typeof value.complaints !='undefined')
 					{
-						content1 +='<tr><td>'+value.complaints+'<tr><td>';
+						content1 +='<tr><td> Compaint :- '+value.complaints+'</td></tr>';
 					}
 
 					if(value.present_medicine !=null && typeof value.present_medicine !='undefined')
 					{
-						content1 +='<tr><td>'+value.present_medicine+'<tr><td>';
+						content1 +='<tr><td>Present medicine :- '+value.present_medicine+'</td></tr>';
 					}
 
 					if(value.medical_history !=null && typeof value.medical_history !='undefined')
 					{
-						content1 +='<tr><td>--------Med-History----------</td></tr>';
-						content1 +='<tr><td>'+value.medical_history+'<tr><td>';
+						content1 +='<tr><td>--------History ----------</td></tr>';
+						content1 +='<tr><td> Med hist :- '+value.medical_history+'</td></tr>';
 					}
 
 
 					if(value.surgical_history !=null && typeof value.surgical_history !='undefined')
 					{
-						content1 +='<tr><td>'+value.surgical_history+'<tr><td>';
+						content1 +='<tr><td> Surgical Hist :- '+value.surgical_history+'</td></tr>';
 					}
 
 
 					if(value.rt_chemo_history !=null && typeof value.rt_chemo_history !='undefined')
 					{
-						content1 +='<tr><td>'+value.rt_chemo_history+'<tr><td>';
+						content1 +='<tr><td> Chemo hist :- '+value.rt_chemo_history+'</td></tr>';
+						content1 +='<tr><td>--------History ----------</td></tr>';
 					}
 
 
 					content1 +='</tbody>';
 					content1 +='</table>';
-					content1 +='</td>';
-					content1 +='</tr>';
+					//content1 +='</td>';
+					//content1 +='</tr>';
 					content1 +='</tbody>';
 					content1 +='</table>'
 					content1 +='</div>';
@@ -221,145 +216,193 @@ function getAge(dateString) {
                     	content = '';
                     	$.each(data, function(key,value)
                     	{	
-                        
-                        	if(typeof value.disease!= 'undefined')                        
-                        	{
-                        	    content += '<li>';
-                        	    content += '<div  >';
-                        	        content += '<table class=chattbl width=100%>';
-                        	        content += '<tbody> ';
-                        	            content += '<tr>';
-                        	                content += '<td width=100%>';
-  //                                          content += '<div>';
-//                                            content += '<h4>'+value.disease_code+'</h4>';
-                                            //content += '<p>'+value.mobile+'</p>';
-    //                                        content += '</div>';
-                                            content += '<div>';
-                                            content += '<p>'+value.pat_address+'</p>';
-                                            content += '</div>';
-                                        content += '</td>';
-                        	            content += '</tr>';
-                        	        content += '</tbody>';
-                        	    content += '</table>';
-                        	    content += '</div>';
-//                      	      content += '<div>';
-                        	}
-                        	content += '</li>';
-                        	if(typeof value.code1_url!= 'undefined' && value.code1_url!=null)                        
-                        	{                        
 
-	                            content += '<table style=width:100%; class=chattbl>';
-	                            content += '<tbody>';
-				    if(value.code_1 !=null && typeof value.code_1!='undefined')
-				    {
-				    	content += '<tr><td calss=code_1>'+value.code_1+'</td></tr>';
-				    }
-	                            content += '<tr>';
-	                            content += '<td>';
-				    if(value.code1_url!=null)
-				    {
-	                            	content += '<img src='+value.code1_url+'>';
-				    }
-	                            content += '</td>';
-        	                    content += '</tr>';
-        	                    content += '</tbody>';
-                 	            content += '</table>';
-                 	       }
-
-				if(typeof value.code2_url!= 'undefined' && value.code2_url!=null)                        
-                        	{                        
-
-	                            content += '<table style=width:100%; class=chattbl>';
-	                            content += '<tbody>';
-				    if(value.code_2 !=null && typeof value.code_2!='undefined')
-				    {
-				    	content += '<tr><td calss=code_2>'+value.code_2+'</td></tr>';
-				    }
-	                            content += '<tr>';
-	                            content += '<td>';
-				    if(value.code2_url!=null)
-				    {
-	                            	content    += '<img src='+value.code2_url+' style=border-radius: 8px;>';
-				    }
-	                            content    += '</td>';
-        	                    content += '</tr>';
-        	                    content += '</tbody>';
-                 	            content += '</table>';
-                 	       }
-
-				if(typeof value.code3_url!= 'undefined' &&  value.code3_url!=null)                        
-                        	{                        
-
-	                            content += '<table style=width:100%; class=chattbl>';
-	                            content += '<tbody>';
-				    if(value.code_3 !=null && typeof value.code_3!='undefined')
-				    {
-				    	content += '<tr><td calss=code_3>'+value.code_3+'</td></tr>';
-				    }
-	                            content += '<tr>';
-	                            content += '<td>';
-			            if(code3_url !=null)
-				    {
-	                            	content    += '<img src='+value.code3_url+' style=border-radius: 8px;>';
-				    }
-
-	                            content    += '</td>';
-        	                    content += '</tr>';
-        	                    content += '</tbody>';
-                 	            content += '</table>';
-                 	       }
-
-
-				if(typeof value.code4_url!= 'undefined' &&  value.code4_url!=null)                        
-                        	{                        
-
-	                            content += '<table style=width:100%; class=chattbl>';
-	                            content += '<tbody>';
-				    if(value.code_4 !=null && typeof value.code_4!='undefined')
-				    {
-				    	content += '<tr><td calss=code_2>'+value.code_2+'</td></tr>';
-				    }
-	                            content += '<tr>';
-	                            content += '<td>';
-				if(value.code4_url!=null)
+				if(value.code_1 !=null)
 				{
-	                            content    += '<img src='+value.code4_url+' style=border-radius: 8px;>';
+					content += '<table style=width:100%; class=chattbl>';
+					content += '<tbody>';
+
+					content += '<tr><td calss=code_1>code -1 is '+value.code_1+'</td></tr>';
+
+					content += '</tbody>';
+					content += '</table>';
 				}
-	                            content    += '</td>';
-        	                    content += '</tr>';
-        	                    content += '</tbody>';
-                 	            content += '</table>';
-                 	       }
-
-				if(typeof value.code5_url!= 'undefined' &&  value.code5_url!=null)                        
-                        	{                        
-
-	                            content += '<table style=width:100%; class=chattbl>';
-	                            content += '<tbody>';
-				    if(value.code_5 !=null && typeof value.code_5!='undefined')
-				    {
-				    	content += '<tr><td calss=code_5>'+value.code_5+'</td></tr>';
-				    }
-	                            content += '<tr>';
-	                            content += '<td>';
-				    if(code5_url!=null)
-				    {
-	                            	content += '<img src='+value.code5_url+' style=border-radius: 8px;>';
-				    }
-	                            content += '</td>';
-        	                    content += '</tr>';
-        	                    content += '</tbody>';
-                 	            content += '</table>';
-                 	       }
 
 
-//                        content += '</div>';
+				
+
+				if( value.code1_url!=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+                                        content += '<tbody>';
+
+
+					var str_array_1 = value.code1_url.split(',');
+
+					for(var i = 0; i < str_array_1.length; i++)
+						{
+
+							str_array_1[i] = 'http://localhost/img/'+str_array_1[i];
+
+							content += '<tr>';
+							content += '<img src='+str_array_1[i]+'>';
+							content += '</tr>';
+						}
+					content += '</tbody>';
+					content += '</table>';
+
+				}
+
+
+
+				if(value.code_2 !=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+					content += '<tbody>';
+
+					content += '<tr><td calss=code_2>code -2 is '+value.code_2+'</td></tr>';
+
+					content += '</tbody>';
+					content += '</table>';
+
+				}
+				
+				if( value.code2_url!=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+								    content += '<tbody>';
+
+
+					var str_array_2 = value.code2_url.split(',');
+
+					for(var i = 0; i < str_array_2.length; i++)
+						{
+
+							str_array_2[i] = 'http://localhost/img/'+str_array_2[i];
+
+							content += '<tr>';
+							content += '<img src='+str_array_2[i]+'>';
+							content += '</tr>';
+						}
+					content += '</tbody>';
+					content += '</table>';
+
+				}
+
+
+
+				if(value.code_3 !=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+					content += '<tbody>';
+	
+					content += '<tr><td calss=code_3>code -3 is '+value.code_3+'</td></tr>';
+
+					content += '</tbody>';
+					content += '</table>';
+				}
+
+
+
+				if( value.code3_url!=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+                                        content += '<tbody>';
+
+					var str_array_3 = value.code3_url.split(',');
+
+					for(var i = 0; i < str_array_3.length; i++)
+						{
+
+							str_array_3[i] = 'http://localhost/img/'+str_array_3[i];
+
+							content += '<tr>';
+							content += '<img src='+str_array_3[i]+'>';
+							content += '</tr>';
+						}
+					content += '</tbody>';
+					content += '</table>';
+
+				}
+
+
+
+
+				if(value.code_4 !=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+					content += '<tbody>';
+
+					content += '<tr><td calss=code_1>code -4 is '+value.code_4+'</td></tr>';
+
+					content += '</tbody>';
+					content += '</table>';
+				}
+
+
+
+				if( value.code4_url!=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+                                        content += '<tbody>';
+
+					var str_array_4 = value.code4_url.split(',');
+
+					for(var i = 0; i < str_array_4.length; i++)
+						{
+
+							str_array_4[i] = 'http://localhost/img/'+str_array_4[i];
+
+							content += '<tr>';
+							content += '<img src='+str_array_4[i]+'>';
+							content += '</tr>';
+						}
+					content += '</tbody>';
+					content += '</table>';
+
+				}
+
+
+				if(value.code_5 !=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+					content += '<tbody>';
+
+					content += '<tr><td calss=code_1>code -5 is '+value.code_5+'</td></tr>';
+	
+					content += '</tbody>';
+					content += '</table>';
+				}
+
+
+				if( value.code5_url!=null)
+				{
+					content += '<table style=width:100%; class=chattbl>';
+                                        content += '<tbody>';
+
+					var str_array_5 = value.code5_url.split(',');
+
+					for(var i = 0; i < str_array_5.length; i++)
+						{
+
+							str_array_5[i] = 'http://localhost/img/'+str_array_5[i];
+
+							content += '<tr>';
+							content += '<img src='+str_array_5[i]+'>';
+							content += '</tr>';
+						}
+					content += '</tbody>';
+					content += '</table>';
+
+				}
+
+
                         
                         content += '</div>';
                         //content +='</li>' ;
 
 	                    });
-//alert(content);
+
                     $('#fetch_details').html(content);
                 }
             });
