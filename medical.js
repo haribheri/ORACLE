@@ -54,11 +54,40 @@ $(document).ready(function(){
             });
 //code for left list
 
+/*
+tbl_patient (uniq_id numeric,p_name text, gender text,mobile text,pat_address text,dob  timestamp without time zone, mr_number numeric,op_ip text, insert_date  timestamp without time zone, recent_date  timestamp without time zone );
+
+tbl_disease(fk_uniq_id numeric,disease_code numeric,complaints text, present_medicine text,ge text,pa text,eg text,dre text);
+
+tbl_med_history(fk_uniq_id numeric,fk_disease_code numeric,medical_history text, surgical_history text, rt_chemo_history text);
+
+tbl_med_codes_1(fk_uniq_id numeric,code_1 numeric,code1_url text);
+
+tbl_med_codes_2(fk_uniq_id numeric,code_2 numeric,code2_url text);
+
+tbl_med_codes_3(fk_uniq_id numeric,code_3 numeric,code3_url text);
+
+tbl_med_codes_4(fk_uniq_id numeric,code_4 numeric,code4_url text);
+
+tbl_med_codes_5(fk_uniq_id numeric,code_5 numeric,code5_url text);
+*/
+
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
     function get_deatils(id)
     {    
         var obj ={};
         obj.pid=id;    
-//        alert("value is "+obj.pid);
+
         $.ajax({
             type: "POST",
             url:'http://localhost/detail.php',  //detail pge url
@@ -76,18 +105,24 @@ $(document).ready(function(){
 					content1 += '<div>';
 					content1 +='<table style=width:100%;>';
 					content1 += '<tbody>';
-					if(value.p_name!=null)
+					if(value.p_name!=null && typeof value.p_name!= 'undefined')
 					{
 						content1 +='<tr><td>'+value.p_name+'</td>';
 					}
-					if(value.gender!=null)
+					if(value.gender!=null && typeof value.gender!= 'undefined')
 					{
 						content1 +='<td>'+value.gender+'</td></tr>';
 					}
-					if(value.mobile!=null)
+					if(value.mobile!=null && typeof value.mobile!= 'undefined')
 					{
 						content1 +='<tr><td class=mobil> contact num:-'+value.mobile+'</td></tr>';
 					}
+
+					if(value.dob!=null && typeof value.dob!= 'undefined')
+					{
+						content1 +='<tr><td class=mobil> Age :-'+getAge(value.dob)+'</td></tr>';
+					}
+
 					content1 +='</tbody>';    
 					content1 +='</table>';
 
@@ -112,7 +147,7 @@ $(document).ready(function(){
 					}
 					if(value.dre!= null && typeof value.dre!= 'undefined')               
 					{
-						content1 +=	'<td class=dre>'+value.dre+'</td></tr>';
+						content1 +='<td class=dre>'+value.dre+'</td></tr>';
 					}
 					content1 +='</tbody>';    
 
@@ -134,15 +169,44 @@ $(document).ready(function(){
 					content1 +='</tr>';
 					content1 +='<tr>';
 
-					if(value.disease!='undefined' && value.disease !=null)
+					if(typeof value.disease!='undefined' && value.disease !=null)
 					{
 						content1 +='<td>Came for : '+value.disease+'</td>';
 					}
-					if(value.disease_code!='undefined' && value.disease_code!=null)
+					if(typeof value.disease_code!='undefined' && value.disease_code!=null)
 					{
-						content1 +='<td>Code is : '+value.disease_code+'</td>';
+						content1 +='<td>Corresponding Code is : '+value.disease_code+'</td></tr>';
 					}
-					content1 +='</tr>';
+
+					if(value.complaints !=null && typeof value.complaints !='undefined')
+					{
+						content1 +='<tr><td>'+value.complaints+'<tr><td>';
+					}
+
+					if(value.present_medicine !=null && typeof value.present_medicine !='undefined')
+					{
+						content1 +='<tr><td>'+value.present_medicine+'<tr><td>';
+					}
+
+					if(value.medical_history !=null && typeof value.medical_history !='undefined')
+					{
+						content1 +='<tr><td>--------Med-History----------</td></tr>';
+						content1 +='<tr><td>'+value.medical_history+'<tr><td>';
+					}
+
+
+					if(value.surgical_history !=null && typeof value.surgical_history !='undefined')
+					{
+						content1 +='<tr><td>'+value.surgical_history+'<tr><td>';
+					}
+
+
+					if(value.rt_chemo_history !=null && typeof value.rt_chemo_history !='undefined')
+					{
+						content1 +='<tr><td>'+value.rt_chemo_history+'<tr><td>';
+					}
+
+
 					content1 +='</tbody>';
 					content1 +='</table>';
 					content1 +='</td>';
@@ -186,6 +250,10 @@ $(document).ready(function(){
 
 	                            content += '<table style=width:100%; class=chattbl>';
 	                            content += '<tbody>';
+				    if(value.code_1 !=null && typeof value.code_1!='undefined')
+				    {
+				    	content += '<tr><td calss=code_1>'+value.code_1+'</td></tr>';
+				    }
 	                            content += '<tr>';
 	                            content += '<td>';
 				    if(value.code1_url!=null)
@@ -203,6 +271,10 @@ $(document).ready(function(){
 
 	                            content += '<table style=width:100%; class=chattbl>';
 	                            content += '<tbody>';
+				    if(value.code_2 !=null && typeof value.code_2!='undefined')
+				    {
+				    	content += '<tr><td calss=code_2>'+value.code_2+'</td></tr>';
+				    }
 	                            content += '<tr>';
 	                            content += '<td>';
 				    if(value.code2_url!=null)
@@ -220,6 +292,10 @@ $(document).ready(function(){
 
 	                            content += '<table style=width:100%; class=chattbl>';
 	                            content += '<tbody>';
+				    if(value.code_3 !=null && typeof value.code_3!='undefined')
+				    {
+				    	content += '<tr><td calss=code_3>'+value.code_3+'</td></tr>';
+				    }
 	                            content += '<tr>';
 	                            content += '<td>';
 			            if(code3_url !=null)
@@ -239,6 +315,10 @@ $(document).ready(function(){
 
 	                            content += '<table style=width:100%; class=chattbl>';
 	                            content += '<tbody>';
+				    if(value.code_4 !=null && typeof value.code_4!='undefined')
+				    {
+				    	content += '<tr><td calss=code_2>'+value.code_2+'</td></tr>';
+				    }
 	                            content += '<tr>';
 	                            content += '<td>';
 				if(value.code4_url!=null)
@@ -256,6 +336,10 @@ $(document).ready(function(){
 
 	                            content += '<table style=width:100%; class=chattbl>';
 	                            content += '<tbody>';
+				    if(value.code_5 !=null && typeof value.code_5!='undefined')
+				    {
+				    	content += '<tr><td calss=code_5>'+value.code_5+'</td></tr>';
+				    }
 	                            content += '<tr>';
 	                            content += '<td>';
 				    if(code5_url!=null)
